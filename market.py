@@ -4,4 +4,4 @@ app = Flask(__name__)
 
 @app.route("/")
 def gerald():
-    return "<p>Gerald is learning</p>"
+    return "<h1>Gerald is learning fast!</h1>"
