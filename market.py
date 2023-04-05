@@ -21,4 +21,4 @@ def home_page():
 
 @app.route("/market")
 def market_pag():
-    return  render_template('market.html')
+    return  render_template('market.html',item_name="Phone")
