@@ -4,6 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABSE_URI'] = 'sqlite:///market.db'
 db = SQLAlchemy(app)
+db.init_app(app)
 
 
 class Item(db.Model):
