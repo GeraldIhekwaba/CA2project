@@ -36,7 +36,30 @@
         </div>
     </nav>
     <h1>Welcome to the Market page</h1>
-    <p>{{ items }}</p>
+    <table class="table table-hover table-dark">
+        <thead>
+            <tr>
+                <!-- Your Columns HERE -->
+                <th scope="col">ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Barcode</th>
+                <th scope="col">Price</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Your rows inside the table HERE: -->
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.id }}</td>
+                    <td>{{ itme.name }}</td>
+                    <td>{{ iem.barcode }}</td>
+                    <td>{{item.price }}</td>
+                </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    <!-- <p>{{ items }}</p> -->
 
     <!-- Optional JavaScript; choose one of the two! -->
 
