@@ -2,7 +2,7 @@ from flask import Flask,render_template
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABSE_URI'] = 'sqlite:///market.db'
+app.config['SQLALCHEMY_DATABSE_URI'] = 'sqlite://market.db'
 db = SQLAlchemy(app)
 db.init_app(app)
 
