@@ -4,5 +4,9 @@ Register Page
 {% endblock %}
 
 {% block content %}
-<h1>Register Form</h1>   
+<h1>Register Form</h1> 
+    <form method="POST" class="form-register" style="color:white">
+        {{ form.username.label() }}
+        {{ form.username(class="form-control", placeholder="Username") }}
+    </form>
 {% endblock %}
