@@ -6,5 +6,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
 app.config['SECRET_KEY'] = '6946e7d7aef3c93d3a6907c2'
 db = SQLAlchemy(app)
 
-
 from market import routes
