@@ -24,4 +24,7 @@ def register_page():
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page'))
+    if form.errors !={}: #if there are not errors from the validations
+        for error_msg in form.errors.values():
+            print(f'There was an error with creating a user:{error_msg}')
     return render_template('register.html',form=form)
