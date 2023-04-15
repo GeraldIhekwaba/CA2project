@@ -49,4 +49,4 @@ def login_page():
 def logout_page():
     logout_user()
     flash(f'You have been logged out', category='info')
-    return redirect(url_for(home_page))
+    return redirect(url_for('home_page'))
