@@ -1,31 +1,35 @@
-Introduction
-This documentation's goal is to give you a step-by-step tutorial for using Flask to build an online store. A lightweight Python web framework called Flask makes it easy to build web apps. The features of the online store we're building will be as follows:
-- User registration and Authentication
-- Buying and selling of products
+Step 1: Setting up the project:
+-Create a new directory for the project.
+-Navigate to the directory and install the required prerequisites using "pip install".
+-Open an editor such as Visual Studio and create a new main Python file called "run.py".
+-Import Flask and create a new Flask app instance.
+-Set the debugging value to True to see the changes made in real-time without the need to restart the server.
 
-Prerequisites
-Before we start building the application, you need to have the following installed on your system:
--Python 3
--Flask
--Flask-WTF
--Flask-Login
--Flask-Bcrypt
--Flask-SQLALchemy
+Step 2: Styling and Templates:
+-Create a base template called "base.html" that holds the background styling.
+-Create a "route.py" file that handles the mapping of URLs to the web application's navigation bar options using "@app.route()".
+-Create HTML files for the different pages of the web application.
+-Import the base design using Jinja Templates.
 
-Step 1: Setting up the project
-The first step is to create a new Flask project; Create a new directory for the project ,navigate to it and install the various prerequisites using "pip install". Then we go into our editor(Visual Studio) and create our main python file "run.py",where we import flask and create a new Flask app instance and set debugging value to true which allows us to see our future changes in the system as its being carried out with out having to exit our server and run the file again
+Step 3: Setting up the database (SQLite 3):
+-Ensure that Flask-SQLAlchemy is installed.
+-Import Flask-SQLAlchemy in "init.py" and create an instance of it called "db" by passing the Flask app as an argument.
+-Create a configuration dictionary to locate the database file "app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'".
+-Create classes for "Item" and "User" tables that contain the necessary details that would be entered into the database.
+-Use DB Browser for SQLite to create, update, edit, and delete table records.
+-Link each table to one another using a foreign key to identify which user in the User table owns an item.
 
-Step 2: Styling and Templates
-After setting up our flask application we need to make it more appealing to our clients thats where html comes in,we create a base template which would hold the background styling called "base.html",we do this in order to save time and energy in hardcoding the certaing background design in the various .html files we would create in the future. 
+Step 4: Form Creation and Validation:
+-Use Flask-WTF to create and display forms.
+-Import the required fields for the form such as "StringField", "PasswordField", and validators like "Email", "DataRequired", "ValidationError".
+-Create registration and login forms.
+-Validate each field before committing it to the User table in the database.
+-Use Bcrypt to hash the password entered by the user during the registration process to protect it from being visible in the database.
 
-We also make a "route.py file" which handles the mapping of url's of the web application with the nav bar options created in the "base.html" using "@app.route()" we then create other .htmls files in relation to the different pages of the web application and we import the base design using Jinja Templates  
+Step 5: Item Selling and Purchasing:
+-Update the item table in the database with the products to be displayed on the market.
+-Create a purchase and sell form using modals and assign functionality to each of them.
+-Assign the forms to the current logged-in user.
 
-Step 3:Setting up the database(SQlite 3)
-After making sure flask-sqlalchemy is installed ,we import it in our "__init__.py" file and create an instance of it calling it "db" and passing our flask app as an argument then we create a configuration dictionary which helps us locate our database file "app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'" we then create classes Item and User which are tables that contain the various details that would be entered into the database,we can use DB Browser for sqlite to create,update,edit and delete table records and we link each table to one another using a foreign key which would allows us to know which user in table User owns an item.
 
-Step 4: Form Creation and Validation
-We then proceed using flask-wtf which helps us to create and display forms it. We import the necessary fields needed in the form "StringField,Passwordfield,etc" and also validators to validate said field "Email,DataRequired,Validationerror,etc" then we create the forms needed in our market page which would be a registration form and a log in form. After validating each field we then commit it to our database file in the User table.
-We also make use of Bcrypt which helps hash the password entered by the user in the registration process so that the password isnt visible in the database file
-
-Step 5 : Item Selling and Purchasing
-This is our final step in which we have updated our item table in the database file with the products to be displayed on the market,we create a purchase and sell form where we assign modals to help us carry out tasks and assign them to current user logged in.
+By following these steps, you can build a fully functional online store using Flask.
