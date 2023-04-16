@@ -24,7 +24,7 @@ def market_page():
                 purchased_item_object.buy(current_user)
                 flash(f'Congratulations your purchased {purchased_item_object.name} for €{purchased_item_object.price}',category='success')
             else:
-                flash(f"Unfortunately you don't have enought money left to purchase{purchased_item_object.name}",category='danger')
+                flash(f"Unfortunately you don't have enought money left to purchase {purchased_item_object.name}",category='danger')
 
         # Sell Item
         sold_item = request.form.get('sold_item')
