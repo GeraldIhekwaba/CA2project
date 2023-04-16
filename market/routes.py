@@ -13,6 +13,7 @@ def home_page():
 @app.route("/market", methods=['GET','POST'])
 @login_required
 def market_page():
+    # Purchase Item
     purchase_form = PurchaseItemForm()
     sell_form = SellItemForm()
     if request.method == "POST":
@@ -25,7 +26,18 @@ def market_page():
             else:
                 flash(f"Unfortunately you don't have enought money left to purchase{purchased_item_object.name}",category='danger')
 
+        # Sell Item
+        sold_item = request.form.get('sold_item')
+        sold_item_object = Item.query.filter_by(name=sold_item).first()
+        if sold_item_object:
+            if current_user.can_sell(sold_item_object):
+                sold_item_object.sell(current_user)
+                flash(f'Congratulations your sold {sold_item_object.name} for back to the market!',category='success')
+            else:
+                flash(f"Unfortunately something went wrong with selling {purchased_item_object.name}",category='danger')
+           
         return redirect(url_for('market_page'))
+
     
     if request.method == "GET":
         owned_items= Item.query.filter_by(owner=current_user.id)
