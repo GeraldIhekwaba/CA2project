@@ -19,18 +19,17 @@ def market_page():
         purchased_item_object = Item.query.filter_by(name=purchased_item).first()
         if purchased_item_object:
             if current_user.can_purchase(purchased_item_object):
-                purchased_item_object.owner = current_user.id
-                current_user.budget -= purchased_item_object.price
-                db.session.commit()
-                flash(f'Congratulations your purchased {purchased_item_object.name} for {purchased_item_object.prcie}',category='success')
+                purchased_item_object.buy(current_user)
+                flash(f'Congratulations your purchased {purchased_item_object.name} for €{purchased_item_object.prcie}',category='success')
             else:
                 flash(f"Unfortunately you don't have enought money left to purchase{purchased_item_object.name}",category='danger')
 
         return redirect(url_for('market_page'))
     
     if request.method == "GET":
+        owned_items= Item.query.filter_by(owner=current_user.id)
         items = Item.query.filter_by(owner=None)
-        return  render_template('market.html',items=items, purchase_form = purchase_form )
+        return  render_template('market.html',items=items, purchase_form = purchase_form ,owned_items=owned_items)
 
 @app.route('/register', methods=['GET','POST'])
 def register_page():
